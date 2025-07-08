@@ -22,9 +22,9 @@ export class KafkaService implements OnModuleInit {
     await this.producer.connect();
 
     // Consumer para recibir las respuestas del chatbot
-    this.consumer = this.kafka.consumer({ groupId: 'response-group' });
+    this.consumer = this.kafka.consumer({ groupId: 'nestjs-group' });
     await this.consumer.connect();
-    await this.consumer.subscribe({ topic: 'chatbot-responses', fromBeginning: false });
+    await this.consumer.subscribe({ topic: 'ia-responses', fromBeginning: false });
 
     await this.consumer.run({
       eachMessage: async ({ message }) => {

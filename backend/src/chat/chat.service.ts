@@ -23,9 +23,9 @@ export class ChatbotService implements OnModuleInit {
         const payload = JSON.parse(message.value.toString());
         const reply = await this.processMessage(payload.message);
 
-        // Enviar respuesta al topic chatbot-responses
+        // Enviar respuesta al topic ia-responses
         await this.producer.send({
-          topic: 'chatbot-responses',
+          topic: 'ia-responses',
           messages: [{ value: JSON.stringify({ userId: payload.userId, reply }) }],
         });
       },
